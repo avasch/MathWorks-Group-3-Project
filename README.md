@@ -27,3 +27,4 @@ Here is the final model of our drone (created by Ava):
 Here is the link to view the final drone model in Onshape:
 https://cad.onshape.com/documents/20d0fcabb8acea3ea6179fe3/w/0e8293d668412b3fffb13cd4/e/7eac579bb005529b925857f8?renderMode=0&uiState=6883c4cd602d2243efea5c5c
 
+(GitHub Repository put together by Ava & Alexis)
