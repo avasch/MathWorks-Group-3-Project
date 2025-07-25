@@ -31,7 +31,7 @@ body_volume = (body_outer_x * body_outer_y * body_outer_z) - ...
 body_mass = body_volume * density_cf;
 
 % === Motors ===
-motor_mass = 0.3;           % kg
+motor_mass = 0.1;           % kg
 total_motor_mass = 4 * motor_mass;
 
 % === Total drone mass without payload ===
