@@ -15,7 +15,7 @@ With the motors sorted out, we could determine the optimal measurements for the 
 
 These measurements were used to create an engineering drawing of the drone for better visualization in Onshape (created by Ava):
 
-<img width="796" height="614" alt="Drone3Drawing" src="https://github.com/user-attachments/assets/ce8f7715-0baa-4215-8ac8-1411623917d5" />
+<img width="862" height="664" alt="Drone3DrawingFINAL" src="https://github.com/user-attachments/assets/c7aba7ae-dcd1-4063-9b19-ec42e160408c" />
 
 From there, The code was developed in stages: first by modeling the physical geometry and mass, then applying statics principles to analyze forces and moments, and finally by validating results through plotted visualizations. Parameters like body thickness, payload mass, and motor position were modularized to allow rapid testing and design adjustments. The MATLAB code models a quadcopter using real-world material and geometry inputs, then calculates mass, thrust, bending moments, and center of mass. The figures such as the drone layout, shear force diagram, and moment diagram were generated through simulations to visually verify load distribution and structural balance (created by Alexis). 
 
