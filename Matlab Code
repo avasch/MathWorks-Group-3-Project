@@ -1,0 +1,134 @@
+%% Drone Structural & Payload Analysis Group 3
+clc; clear; close all;
+
+%% === PARAMETERS ===
+
+% === Physical constants ===
+g = 9.81;             % m/s², gravity
+
+% === Material properties (carbon fiber) ===
+density_cf = 1840;    % kg/m³
+
+% === Arm geometry ===
+arm_radius = 0.01;     % 10 mm
+arm_length = 0.125;    % 125 mm
+arm_volume = pi * arm_radius^2 * arm_length;
+mass_arm = arm_volume * density_cf;
+total_arm_mass = 4 * mass_arm;
+
+% === Body geometry ===
+body_thickness = 0.01;   
+body_outer_x = 0.08;     % 80 mm
+body_outer_y = 0.08;
+body_outer_z = 0.035;    % 35 mm
+
+body_inner_x = body_outer_x - 2 * body_thickness;
+body_inner_y = body_outer_y - 2 * body_thickness;
+body_inner_z = body_outer_z - 2 * body_thickness;
+
+body_volume = (body_outer_x * body_outer_y * body_outer_z) - ...
+              (body_inner_x * body_inner_y * body_inner_z);
+body_mass = body_volume * density_cf;
+
+% === Motors ===
+motor_mass = 0.3;           % kg
+total_motor_mass = 4 * motor_mass;
+
+% === Total drone mass without payload ===
+frame_mass = total_arm_mass + body_mass;
+total_mass = frame_mass + total_motor_mass;
+
+% === Payload parameters ===
+payload_mass = 1.5;           
+payload_pos = [0, 0];      
+
+%% === MASS POSITIONS ===
+
+% Motor positions (arms at ±x, ±y)
+arm_pos = [
+    arm_length, 0;
+   -arm_length, 0;
+    0, arm_length;
+    0, -arm_length
+];
+
+% Positions and masses
+masses = [motor_mass, motor_mass, motor_mass, motor_mass, body_mass, payload_mass];
+positions = [arm_pos; 0, 0; payload_pos];
+
+% Compute center of mass (with payload)
+x_com = sum(masses .* positions(:,1)') / sum(masses);
+y_com = sum(masses .* positions(:,2)') / sum(masses);
+
+%% === OUTPUT MASS AND COM ===
+
+fprintf('\n===== Drone Mass Summary =====\n');
+fprintf('Mass of 1 Arm:         %.2f g\n', mass_arm * 1000);
+fprintf('Total Arm Mass:        %.2f g\n', total_arm_mass * 1000);
+fprintf('Body Mass:             %.2f g\n', body_mass * 1000);
+fprintf('Total Motor Mass:      %.2f g\n', total_motor_mass * 1000);
+fprintf('Payload Mass:          %.2f g\n', payload_mass * 1000);
+fprintf('------------------------------\n');
+fprintf('Total Mass (with payload): %.2f g\n', sum(masses) * 1000);
+
+fprintf('\n===== Center of Mass (With Payload) =====\n');
+fprintf('X: %.2f mm\n', x_com * 1000);
+fprintf('Y: %.2f mm\n', y_com * 1000);
+
+%% === VISUALIZATION: Drone Layout and Thrust ===
+figure;
+scatter(positions(:,1), positions(:,2), 200, 'filled'); hold on;
+scatter(x_com, y_com, 300, 'r', 'filled');
+
+% FIXED quiver line
+quiver(positions(:,1), positions(:,2), ...
+       zeros(size(positions,1),1), 0.05*ones(size(positions,1),1), ...
+       0, 'g');
+
+legend('Component Positions', 'Center of Mass', 'Thrust Vectors');
+title('Drone Top View with COM and Thrust');
+xlabel('X (m)'); ylabel('Y (m)');
+axis equal; grid on;
+
+%% === SHEAR & MOMENT DIAGRAM for one drone arm ===
+
+P = g * motor_mass;    % force (N) = mass * g
+L = arm_length;
+x = linspace(0, L, 100); % position along arm
+
+V = -P * ones(size(x));     % Shear force
+M = -P * (L - x);           % Bending moment
+
+figure;
+subplot(2,1,1);
+plot(x, V, 'b', 'LineWidth', 2);
+title('Shear Force Diagram (Cantilever Drone Arm)');
+ylabel('Shear Force (N)');
+grid on;
+
+subplot(2,1,2);
+plot(x, M, 'r', 'LineWidth', 2);
+title('Bending Moment Diagram (Cantilever Drone Arm)');
+xlabel('Position along arm (m)');
+ylabel('Moment (Nm)');
+grid on;
+
+%% === PAYLOAD DROP SIMULATION (COM shift) ===
+
+masses_dropped = masses(1:end-1);
+positions_dropped = positions(1:end-1, :);
+
+x_com_dropped = sum(masses_dropped .* positions_dropped(:,1)') / sum(masses_dropped);
+y_com_dropped = sum(masses_dropped .* positions_dropped(:,2)') / sum(masses_dropped);
+
+fprintf('\n===== COM After Payload Drop =====\n');
+fprintf('X: %.2f mm\n', x_com_dropped * 1000);
+fprintf('Y: %.2f mm\n', y_com_dropped * 1000);
+
+%% === OPTIMIZATION: Max Payload without exceeding thrust ===
+
+max_thrust_kg = 4.0; % kg total from all motors
+available_mass_for_payload = max_thrust_kg - (frame_mass + total_motor_mass);
+
+fprintf('\n===== Optimized Payload Estimate =====\n');
+fprintf('Max allowable payload (kg): %.2f\n', available_mass_for_payload);
