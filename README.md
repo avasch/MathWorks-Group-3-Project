@@ -1,7 +1,7 @@
 # MathWorks-Group-3-Project
 In this project, we created an optimized drone frame using the principles of statics and physics. Our drone is a carbon fiber quadcopter (4 motors) with four arms and a central body for storing a battery and circuitry.
 
-We began by coming up with some rough design ideas. CAD software was used to create 3D models for better visualization (created by Ava). Of the designs created, we collectively decided on proceeding with this one:
+We began by coming up with some rough design ideas. CAD software was used to create 3D models for better visualization (created by Ava). Of the designs created, we collectively decided to proceed with this one:
 
 <img width="470" height="350" alt="InitialDrone3" src="https://github.com/user-attachments/assets/4bf19aa3-45e4-41e9-b287-9eadbf4f0c67" />
 
@@ -24,6 +24,6 @@ Here is the final model of our drone (created by Ava):
 
 <img width="584" height="323" alt="Drone3CAD" src="https://github.com/user-attachments/assets/a8f1e3e8-32f9-41bc-89af-4d58dd72bcb3" />
 
-Here is a link to view the Onshape CAD file:
+Here is the link to view the final drone model in Onshape:
 https://cad.onshape.com/documents/20d0fcabb8acea3ea6179fe3/w/0e8293d668412b3fffb13cd4/e/7eac579bb005529b925857f8?renderMode=0&uiState=6883c4cd602d2243efea5c5c
 
