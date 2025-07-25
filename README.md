@@ -17,8 +17,11 @@ These measurements were used to create an engineering drawing of the drone for b
 
 <img width="796" height="614" alt="Drone3Drawing" src="https://github.com/user-attachments/assets/ce8f7715-0baa-4215-8ac8-1411623917d5" />
 
-From there, the detailed work of creating the Matlab code for the drone began. This code created clean, detailed analysis of the drone, as well as graphs to visualize the thrust, shear forces, and moments (created by Alexis). 
-<img width="479" height="315" alt="Screenshot (63)" src="https://github.com/user-attachments/assets/32320efb-2d58-4be5-b64c-8f604e36b01d" />
+From there, The code was developed in stages: first by modeling the physical geometry and mass, then applying statics principles to analyze forces and moments, and finally by validating results through plotted visualizations. Parameters like body thickness, payload mass, and motor position were modularized to allow rapid testing and design adjustments. The MATLAB code models a quadcopter using real-world material and geometry inputs, then calculates mass, thrust, bending moments, and center of mass. The figures such as the drone layout, shear force diagram, and moment diagram were generated through simulations to visually verify load distribution and structural balance (created by Alexis). 
+
+<img width="1023" height="685" alt="Screenshot 2025-07-25 112449" src="https://github.com/user-attachments/assets/7816a4a1-8e98-4c20-b9a6-5d26e1865087" />
+
+<img width="1028" height="677" alt="Screenshot 2025-07-25 112249" src="https://github.com/user-attachments/assets/bac707a3-4d85-47b1-b183-6cb4666d1c54" />
 
 Here is the final model of our drone (created by Ava):
 
