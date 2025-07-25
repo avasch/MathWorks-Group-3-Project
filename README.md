@@ -5,11 +5,11 @@ We began by coming up with some rough design ideas. CAD software was used to cre
 
 <img width="470" height="350" alt="InitialDrone3" src="https://github.com/user-attachments/assets/4bf19aa3-45e4-41e9-b287-9eadbf4f0c67" />
 
-We then started working out the details of the design, the first being the motors. The motors are the only outside weight that the drone will be carrying, so knowing the exact details of them is crucial to optimizing the drone itself. Each motor provides 1 kg of thrust, and we approximated its dimensions (by averaging the most common drone motors on the market) as follows (created by Ava):
+We then started working out the details of the design, the first being the motors. The motors are the only outside weight that the drone will be carrying, so knowing their exact details is crucial to optimizing the drone itself. Each motor provides 1 kg of thrust, and we approximated its dimensions (by averaging the most common drone motors on the market) as follows (created by Ava):
 
 <img width="211" height="223" alt="Drone3MotorDim" src="https://github.com/user-attachments/assets/e4deb042-49b2-4a83-b6a7-7fc3a60095c9" />
 
-With the motors sorted out, we could determine the optimal measurements for the drone frame (created by Gavin). This includes the exact measurments, the material, and preliminary calculations for details like density, weight, thickness, and the exact details of the shape (created by Gavin):
+With the motors sorted out, we could determine the optimal measurements for the drone frame. This includes the exact measurments, the material, and preliminary calculations for details like density, weight, thickness, and the exact details of the shape (created by Gavin):
 
 <img width="540" height="322" alt="Drone3Calculations" src="https://github.com/user-attachments/assets/63bafd7e-b8c7-431d-b274-340c9801b029" />
 
